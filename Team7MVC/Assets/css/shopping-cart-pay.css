@@ -8,6 +8,10 @@ body {
     line-height: 1.3em;
 }
 
+.Products-Detail {
+    margin: 6rem 0 3rem;
+}
+
 .pay-main .container {
     display: flex;
 }
@@ -45,9 +49,9 @@ label {
     margin: 0;
 }
 
-.form-control {
+/*.form-control {
     height: 53px;
-}
+}*/
 
     .form-control:focus {
         border-color: #862633;
@@ -130,7 +134,7 @@ label {
         color: #862633;
     }
 
-.btn {
+.complete-btn {
     background: #862633;
     color: white;
     float: right;
@@ -140,7 +144,7 @@ label {
     line-height: 10px;
 }
 
-    .btn:hover {
+    .complete-btn:hover {
         color: white;
         background: #5e1b24;
     }

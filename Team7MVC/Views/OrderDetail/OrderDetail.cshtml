@@ -20,8 +20,7 @@
                 <p class="order-Numbering">Order #2000</p>
                 <div class="order-who">
                     <h1>
-                        Thank you
-                        <h1>&nbspMina!</h1>
+                        Thank you Mina!
                     </h1>
                 </div>
             </div>
@@ -90,8 +89,8 @@
                 <div class="form-group">
                     <div class="form-btn">
                         <a href="#">Need help? Contact us</a>
-                        <button type="submit" class="btn">Complete order</button>
-                    
+                        <button type="submit" class="btn complete-btn">Complete order</button>
+
                     </div>
                 </div>
                 <div class="form-group footer">
@@ -205,3 +204,24 @@
         </div>
     </div>
 </div>
+
+@section JQuery
+{
+    <script>
+        $(function () {
+            $("header").addClass("fixed-header");
+            $("header nav")
+                .removeClass("navbar-dark")
+                .addClass("navbar-light");
+            $("header a img").prop("src", "../Assets/img_Index/logo_dark.png");
+            $("header .nav-item > a")
+                .removeClass("text-white")
+                .addClass("text-dark");
+            $("#search-input")
+                .removeClass("whiteplaceholder")
+                .removeClass("text-white")
+                .addClass("blackplaceholder")
+                .addClass("text-dark");
+        });
+    </script>
+}
