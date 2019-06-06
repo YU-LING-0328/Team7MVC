@@ -1,0 +1,247 @@
+html {
+    font-size: 16px;
+    font-family: "微軟正黑體", sans-serif;
+    line-height: 1.4;
+    color: #000;
+}
+
+a {
+    text-decoration: none;
+    color: #fff
+}
+
+    a:hover {
+        text-decoration: none;
+        color: #aaa;
+        background: rgba(200, 200, 200, .2);
+    }
+
+.container {
+    max-width: 90%;
+    margin: 0 auto;
+    padding: 0;
+}
+
+.link-btn {
+    min-width: 10rem;
+    padding: 1rem 1.2rem;
+    line-height: 1.2;
+    border: 1px solid rgba(255, 255, 255, .3);
+    font-size: .75rem;
+}
+
+.whiteplaceholder::placeholder {
+    color: #fff;
+}
+
+.blackplaceholder::placeholder {
+    color: #000;
+}
+
+/* header */
+.header {
+    background: none;
+    border: none;
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 4.5rem;
+    z-index: 200;
+    transition: .5s;
+}
+
+    .header #logo:hover {
+        background: none;
+    }
+
+    .header img {
+        width: 16.875rem;
+        height: 1.875rem;
+    }
+
+.fixed-header {
+    position: fixed;
+    background-color: rgba(255, 255, 255, 1);
+    box-shadow: 0 0 5px rgba(15, 15, 15, .3);
+}
+
+.header nav {
+    height: 4.5rem;
+}
+/* .page-header #navbarSupportedContent {
+    background-color: rgba(255, 255, 255, .9);
+    box-shadow: 0 0 5px rgba(15, 15, 15, .3);
+} */
+.header .nav-link {
+    padding: 0;
+    line-height: 4.5rem;
+    text-shadow: rgba(0,0,0,.3) 0 0 3px;
+}
+
+#header-search {
+    width: 20rem;
+}
+
+    #header-search input {
+        background-color: rgba(255,255,255,.1);
+    }
+
+        #header-search input:focus {
+            box-shadow: none;
+            background-color: rgba(255,255,255,.1);
+        }
+
+/* carouselFade */
+.carousel-item img {
+    width: 100vw;
+}
+
+.carousel-item div {
+    top: 25%;
+    left: 5%;
+    padding-left: 2.5rem;
+    padding-right: 2.5rem;
+    text-shadow: rgba(0,0,0,.8) 0 0 8px;
+    max-width: 31.25rem;
+}
+
+.carousel-item p:first-child {
+    font-size: 1.5rem;
+}
+
+.carousel-item h2 {
+    font-size: 1.875rem;
+}
+
+.carousel-item p:nth-child(3) {
+    font-size: 1.25rem;
+}
+
+/* section */
+.section div:nth-child(2) {
+    max-width: 31.25rem;
+}
+
+.section p:first-child {
+    font-size: 1.5rem;
+}
+
+.section p:nth-child(3) {
+    font-size: 1.25rem;
+}
+
+.section .link-btn {
+    border: 1px solid rgba(0, 0, 0, .3);
+}
+
+/* introduction */
+.introduction .card-1 {
+    background-image: url("../img_Index/card01.jpg");
+    background-size: cover;
+    height: 416px;
+}
+
+.introduction .card-2 {
+    background-image: url("../img_Index/card02.png");
+    background-size: cover;
+    height: 416px;
+}
+
+.introduction .card-3 {
+    background-image: url("../img_Index/card03.jpg");
+    background-size: cover;
+    height: 416px;
+}
+
+.introduction .content {
+    max-width: 31.25rem;
+}
+
+.introduction p {
+    font-size: 1.5rem;
+    margin: 0 0 1.25rem;
+}
+
+.introduction h2 {
+    font-size: 1.875rem;
+    margin: 0 0 1.875rem;
+}
+
+.introduction p:nth-child(3) {
+    font-size: 1.25rem;
+}
+
+/* special */
+.special {
+    background-image: url("../img_Index/distillery-tour-background.jpg");
+    background-size: cover;
+    min-height: 37.5rem;
+}
+
+    .special .content {
+        max-width: 31.25rem;
+    }
+
+/* footer */
+.page-footer {
+    background-color: #1a1a1a;
+}
+
+    .page-footer p {
+        font-size: .75rem;
+    }
+
+.footer-email {
+    background-image: url("../img_Index/footer_subscribe_bg.jpg");
+    background-size: cover;
+    height: 200px;
+}
+
+    .footer-email p {
+        font-size: 1.25rem;
+    }
+
+    .footer-email input {
+        height: 2.75rem;
+        font-size: .75rem;
+        background-color: rgba(255,255,255,.1);
+    }
+
+        .footer-email input:focus {
+            box-shadow: none;
+            background-color: rgba(255,255,255,.1);
+        }
+
+    .footer-email button {
+        width: 4rem;
+        font-size: .75rem;
+        background: #000;
+    }
+
+.footer-menu a {
+    font-weight: bolder;
+    background: none;
+    font-size: 0.85rem;
+}
+
+.footer-share div {
+    width: 30rem;
+}
+
+.footer-share a {
+    background: none;
+    font-size: 1.25rem;
+}
+
+.footer-link a {
+    font-weight: bolder;
+    background: none;
+    font-size: .75rem;
+}
+
+.footer-img {
+    background: black;
+    width: 100%;
+    height: 5vh;
+}

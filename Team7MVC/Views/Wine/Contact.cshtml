@@ -1,0 +1,133 @@
+﻿
+@{
+    ViewBag.Title = "Contact";
+}
+
+@section CSS
+{
+    <link href="~/Assets/css/ContactStyles.css" rel="stylesheet" />
+}
+
+<div class="container text-center mt-5">
+    <div class="content" style="margin-top: 10rem;">
+        <h2 class="mb-4">GET IN TOUCH</h2>
+        <div class="full-text">
+            <p>
+                Whether you have a question about our products, feedback on our services, or require specific assistance from
+                The
+                Macallan, we want to make it as easy as possible to get the information and support you are looking for.
+            </p>
+            <p>
+                To speak to a member of our team please call <strong>(03)588-8588</strong>. Our lines are open Monday-Friday,
+                08:00
+                to 18:00 UK time.
+            </p>
+            <p>
+                Alternatively please complete the enquiry form below. We aim to respond to your enquiry within 2 working
+                days.
+            </p>
+        </div>
+    </div>
+    <hr>
+    @using (Html.BeginForm())
+    {
+        @Html.AntiForgeryToken()
+        <div class="input-group text-left justify-content-center">
+            <div class="input-item">
+                <label for="name">Name *</label>
+                <input id="name" name="name" class="form-control" type="text" data-val="true"
+                       data-val-required="This field is required." required="required" />
+                @*<small>
+                        Your password must be 8-20 characters long, contain letters and numbers, and must not contain spaces,
+                        special
+                        characters, or emoji.
+                    </small>*@
+            </div>
+
+            <div class="input-item">
+                <label for="contact-email">CONTACT EMAIL *</label>
+                <input id="contact-email" name="email" class="form-control" type="email" data-val="true"
+                       data-val-required="This field is required." required="required" />
+                @*<small>
+                        Your password must be 8-20 characters long, contain letters and numbers, and must not contain spaces,
+                        special
+                        characters, or emoji.
+                    </small>*@
+            </div>
+
+            <div class="input-item">
+                <label for="telephone">CONTACT TELEPHONE NUMBER</label>
+                <input id="telephone" name="phone" class="form-control" type="tel" data-val="true" />
+                @*<small>
+                        Your password must be 8-20 characters long, contain letters and numbers, and must not contain spaces,
+                        special
+                        characters, or emoji.
+                    </small>*@
+            </div>
+
+            <div class="input-item">
+                <label for="category">Category *</label>
+                <select id="category" name="questionCategory" title="" class="PrimaryField form-control" data-val="true"
+                        data-val-required="This field is required." required="required">
+                    <option value="">--Please Select--</option>
+                    <option value="The Macallan Online Shop">The Macallan Online Shop</option>
+                    <option value="Product Information">Product Information</option>
+                    <option value="Product Quality">Product Quality</option>
+                    <option value="Distillery">Distillery</option>
+                    <option value="Fine and Rare">Fine and Rare</option>
+                    <option value="Make The Call">Make The Call</option>
+                    <option value="Newsletter">Newsletter</option>
+                    <option value="Working with The Macallan">Working with The Macallan</option>
+                    <option value="Other">Other</option>
+                </select>
+                @*<small>
+                        Your password must be 8-20 characters long, contain letters and numbers, and must not contain spaces,
+                        special
+                        characters, or emoji.
+                    </small>*@
+            </div>
+
+            <div class="input-item">
+                <label for="description">Description</label>
+                <textarea name="comments" class="form-control"></textarea>
+                @*<small>
+                        Your password must be 8-20 characters long, contain letters and numbers, and must not contain spaces,
+                        special
+                        characters, or emoji.
+                    </small>*@
+            </div>
+        </div>
+        @*@Html.RenderAction("Contact");*@
+        <button type="submit" class="btn btn-block" id="submit">SUBMIT</button>
+    }
+
+</div>
+
+@section JQuery
+{
+    <script>
+        $(function () {
+            $("header nav")
+                .removeClass("navbar-dark")
+                .addClass("navbar-light");
+            $("header a img").prop("src", "../Assets/img_Index/logo_dark.png");
+            $("header .nav-item > a")
+                .removeClass("text-white")
+                .addClass("text-dark");
+            $("#search-input")
+                .removeClass("whiteplaceholder")
+                .removeClass("text-white")
+                .addClass("blackplaceholder")
+                .addClass("text-dark");
+            $(window).scroll(function () {
+                var scrollVal = $(this).scrollTop();
+                if (scrollVal > 0) {
+                    $("header").addClass("fixed-header");
+                }
+                if (scrollVal == 0) {
+                    $("header").removeClass("fixed-header");
+                }
+            });
+        });
+    </script>
+}

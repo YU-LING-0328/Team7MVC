@@ -1,0 +1,70 @@
+﻿<header class="header">
+    <nav class="navbar navbar-expand-lg navbar-dark px-0 py-auto">
+        <button class="navbar-toggler border-0 px-3" type="button" data-toggle="collapse"
+                data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false"
+                aria-label="Toggle navigation">
+            <i class="fas fa-bars"></i>
+        </button>
+        <a class="navbar-brand m-0 px-3" href="@Url.Action("Index","Wine")" id="logo">
+            <img src="~/Assets/img_Index/logo_light.png" alt="logo">
+        </a>
+
+        <div class="collapse navbar-collapse px-3" id="navbarSupportedContent">
+            <ul class="navbar-nav mr-auto">
+                <li class="nav-item">
+                    <a class="nav-link text-white px-4" href="@Url.Action("Inside_the_macallane","Wine")">INSIDE THE MACALLAN</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link text-white px-4" href="@Url.Action("Index","Product")">SHOP</a>
+                </li>
+            </ul>
+            @using (Html.BeginForm("ProductPage", "Wine"))
+            {
+                <div class="input-group mr-5 px-3" id="header-search">
+                    <input type="text" class="form-control text-white border-dark whiteplaceholder my-auto" placeholder="Search"
+                           aria-label="Search" aria-describedby="search" id="search-input" name="search">
+                    <div class="input-group-append">
+                        <button class="btn btn-dark border-0 text-white font-weight-bold" type="submit"
+                                id="search">
+                            Search
+                        </button>
+                    </div>
+                </div>
+            }
+            <ul class="navbar-nav">
+                <li class="nav-item">
+                    <a class="nav-link text-white px-3" href="@Url.Action("ShoppingCart","Product")">
+                        <i class="fas fa-shopping-bag"></i>
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link text-white px-3" href="@Url.Action("Contact","Wine")">
+                        <i class="far fa-envelope"></i>
+                    </a>
+                </li>
+                <li class="nav-item dropdown">
+                    <a class="nav-link text-white dropdown-toggle px-3" href="#" data-toggle="dropdown"
+                       aria-haspopup="true" aria-expanded="false">
+                        <i class="fas fa-user"></i>
+                    </a>
+                    <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
+                        @{
+                            if (User.Identity.Name == string.Empty)
+                            {
+                                @Html.ActionLink("Sign in ", "Login", new { ActionName = ViewBag.Title }, new { @class = "dropdown-item" })
+                                @Html.ActionLink("Create account", "Register", "Account", null, new { @class = "dropdown-item" })
+                            }
+                            else
+                            {
+                                @*<a class="dropdown-item" href="@Url.Action("SignOut","Wine")">@User.Identity.Name 登出</a>*@
+                                @Html.ActionLink(User.Identity.Name, "CustomerEdit", "Customer", new { id = User.Identity.Name }, new { @class = "dropdown-item" })
+                                @Html.ActionLink("My Account", "CustomerEdit", "Customer", new { id = User.Identity.Name }, new { @class = "dropdown-item" })
+                                @Html.ActionLink("Sign out", "SignOut", "Wine", null, new { @class = "dropdown-item" })}
+                        }
+
+                    </div>
+                </li>
+            </ul>
+        </div>
+    </nav>
+</header>

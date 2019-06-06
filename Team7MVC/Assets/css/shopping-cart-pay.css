@@ -1,0 +1,677 @@
+html {
+    height: 100%;
+}
+
+body {
+    font-family: 'Adobe Garamond Pro';
+    font-size: 14px;
+    line-height: 1.3em;
+}
+
+.pay-main .container {
+    display: flex;
+}
+
+.pay-main-left {
+    flex-direction: column;
+    width: 52%;
+    padding-right: 6%;
+    float: left;
+}
+
+.pay-main h2 {
+    font-size: 1.48em;
+    line-height: 1.19;
+    font-weight: normal;
+    text-align: left;
+    padding-left: 7.2px;
+}
+
+.form-group {
+    font-size: 1.2em;
+    padding: 0.42857em;
+    float: left;
+    width: 100%;
+}
+
+.group-half {
+    width: 50%;
+}
+
+label {
+    /* position: absolute; */
+    color: #737373;
+    text-align: left;
+    margin: 0;
+}
+
+.form-control {
+    height: 53px;
+}
+
+    .form-control:focus {
+        border-color: #862633;
+        box-shadow: 0 0 0 1px #862633 inset;
+    }
+
+.form-group-check {
+    margin: 0;
+}
+
+.form-check {
+    display: flex;
+    margin: 30px 0;
+    padding: 0;
+}
+
+.form-check-label {
+    width: 100%;
+    padding-left: 10px;
+}
+
+.form-group .form-checkbox {
+    border-radius: 4px;
+    width: 18px;
+    height: 18px;
+    transition: all 0.2s ease-in-out;
+    position: relative;
+}
+
+.pay-main .form-checkbox:hover,
+.pay-main .input-radio:hover {
+    border-color: #c6c6c6;
+}
+
+.form-checkbox:checked {
+    border: none;
+    box-shadow: 0 0 0 10px #862633 inset;
+}
+
+    .form-checkbox:checked::after {
+        transform: scale(1);
+        opacity: 1;
+    }
+
+.form-checkbox::after {
+    width: 10px;
+    height: 8px;
+    margin-left: -5px;
+    margin-top: -4px;
+    background-image: url(/image/check.jpg);
+}
+
+.form-checkbox::after {
+    content: "";
+    display: block;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    -webkit-transform: scale(0.2);
+    transform: scale(0.2);
+    -webkit-transition: all 0.2s ease-in-out 0.1s;
+    transition: all 0.2s ease-in-out 0.1s;
+    opacity: 0;
+}
+
+.form-btn {
+    text-align: left;
+    display: flex;
+    justify-content: space-between;
+}
+
+    .form-btn a {
+        color: #862633;
+        font-size: 18px;
+        text-decoration: none;
+        line-height: 53px;
+    }
+
+    .form-btn i {
+        color: #862633;
+    }
+
+.btn {
+    background: #862633;
+    color: white;
+    float: right;
+    padding: 1.1rem 1.2rem;
+    font-size: 1.2rem;
+    height: 53px;
+    line-height: 10px;
+}
+
+    .btn:hover {
+        color: white;
+        background: #5e1b24;
+    }
+
+.payment-method h2::before {
+    content: '';
+    border: 1px #dfdfdf solid;
+    flex: 1 0 2em;
+    border-bottom: 0;
+    border-right: 0;
+    border-top-left-radius: 5px;
+    margin-right: 1em;
+}
+
+.payment-method h2 {
+    display: flex;
+    margin: 0;
+    padding: 0;
+}
+
+    .payment-method h2::after {
+        content: '';
+        border: 1px #dfdfdf solid;
+        flex: 1 0 2em;
+        border-bottom: 0;
+        border-left: 0;
+        border-top-right-radius: 5px;
+        margin-left: 1em;
+    }
+
+.select-pay-for {
+    display: flex;
+    border: 1px #dfdfdf solid;
+    border-top: 0;
+    border-bottom-left-radius: 5px;
+    border-bottom-right-radius: 5px;
+}
+
+    .select-pay-for button {
+        width: 40%;
+        margin: 20px 0;
+    }
+
+.card {
+    border-top: 0;
+}
+
+.card-group {
+    background-color: #f2f3f4;
+    border: 1px solid #e3e3e3;
+    border-radius: 4px;
+    padding: 10px 13px;
+    height: 40px;
+    margin-bottom: 10px;
+}
+
+.cardIcon {
+    background: url(https://www.paypalobjects.com/images/checkout/hermes/sprite_logos_wallet_v10_1x.png) no-repeat 0 100px;
+    background-position: 0 -124px;
+    height: 22px;
+    float: left;
+    width: 32px;
+    padding: 0 4px 0 0;
+}
+
+.card-no {
+    display: flex;
+    margin-bottom: 15px;
+}
+
+.card p {
+    margin-right: 10px;
+    margin-bottom: 0;
+    line-height: 40px;
+}
+
+.card input {
+    height: 40px;
+    width: 18%;
+    padding: 12px 6px;
+}
+
+.validity-period {
+    display: flex;
+    margin-bottom: 15px;
+    line-height: 40px;
+}
+
+.creditcard {
+    background: url(/image/credit.png) no-repeat 0 100px;
+    position: absolute;
+    background-position: 0 -589px;
+}
+
+.identity-card {
+    display: flex;
+    line-height: 40px;
+}
+
+    .identity-card input {
+        width: 78%;
+    }
+
+.form-footer {
+    border-top: 2px solid #e2e2e2;
+    padding: 1em 0;
+    display: flex;
+}
+
+.footer {
+    margin: 0;
+    padding: 0;
+}
+
+.form-footer p {
+    color: #707070;
+    font-size: 11px;
+    margin: 0;
+}
+
+.pay-main-right {
+    border-left: 1px solid #e2e2e2;
+    width: 48%;
+    padding-left: 4%;
+    background-position: left top;
+}
+
+.order-summary-sections {
+    display: flex;
+    flex-direction: column;
+    height: calc(100vh - 8em);
+    width: 100%;
+}
+
+.product-list {
+    display: flex;
+    flex: 0 1 auto;
+    min-height: 15em;
+    overflow: hidden;
+    padding: 0;
+    position: relative;
+}
+
+    .product-list::before {
+        background-color: transparent;
+        top: 0;
+    }
+
+    .product-list::after {
+        content: '';
+        display: block;
+        height: 1px;
+        left: 0;
+        position: absolute;
+        transition: background-color 0.3s cubic-bezier(0.3, 0, 0, 1);
+        width: 100%;
+        z-index: 4;
+        background-color: rgba(174, 174, 174, 0.34);
+        bottom: 0;
+    }
+
+.order-summary-sections-content {
+    min-width: 100%;
+    overflow-y: auto;
+}
+
+.product-table {
+    margin-top: 0.75em;
+    margin-bottom: 1.5em;
+    position: relative;
+    z-index: 1;
+}
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+    border-spacing: 0;
+    font-size: 1em;
+    text-align: left;
+}
+
+.visually-hidden {
+    border: 0;
+    clip: rect(0 0 0 0);
+    width: 2px;
+    height: 2px;
+    margin: -2px;
+    overflow: hidden;
+    padding: 0;
+    position: absolute;
+}
+
+td:first-child,
+th:first-child {
+    padding-left: 0;
+    text-align: left;
+}
+
+td,
+th {
+    padding: 0;
+    font-weight: normal;
+    padding-left: 1em;
+}
+
+    td:first-child,
+    th:first-child {
+        text-align: left;
+    }
+
+.product:first-child td {
+    padding-top: 0;
+}
+
+td:first-child,
+th:first-child {
+    padding-left: 0;
+    text-align: left;
+}
+
+.product-thumbnail {
+    width: 4.6em;
+    height: 4.6em;
+    border-radius: 8px;
+    background: #fff;
+    position: relative;
+    margin-bottom: 10px;
+}
+
+.product-thumbnail-wrapper {
+    width: 100%;
+    height: 100%;
+    position: relative;
+    overflow: hidden;
+    border-radius: 8px;
+    z-index: 1;
+}
+
+.product-thumbnail-image {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    max-width: 100%;
+    max-height: 100%;
+    margin: auto;
+}
+
+.product-thumbnail-quantity {
+    font-size: 0.85714em;
+    font-weight: 700;
+    line-height: 1.75em;
+    white-space: nowrap;
+    text-align: center;
+    border-radius: 1.75em;
+    background-color: rgba(114, 114, 114, 0.9);
+    color: #fff;
+    -webkit-box-sizing: border-box;
+    box-sizing: border-box;
+    min-width: 1.75em;
+    height: 1.75em;
+    padding: 0 0.58333em;
+    position: absolute;
+    right: -0.75em;
+    top: -0.75em;
+    z-index: 3;
+}
+
+.product-thumbnail::after {
+    content: '';
+    display: block;
+    position: absolute;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    right: 0;
+    border-radius: 8px;
+    border: 1px rgba(0, 0, 0, 0.1) solid;
+    z-index: 2;
+}
+
+.product-description {
+    width: 100%;
+}
+
+.product-description-name {
+    width: 1em;
+    min-width: 100%;
+    display: block;
+    font-size: 1.1rem;
+    font-weight: 700;
+}
+
+.order-summary-emphasis {
+    font-size: 1.1rem;
+    font-weight: 700;
+}
+
+.total-line:first-child th,
+.total-line:first-child td {
+    padding-top: 0;
+}
+
+td:first-child,
+th:first-child {
+    padding-left: 0;
+    text-align: left;
+}
+
+.total-line-price {
+    text-align: right;
+    white-space: nowrap;
+}
+
+.order-summary-small-text {
+    color: #707070;
+    font-size: 0.85714em;
+}
+
+.order-summary-section {
+    padding-top: 1.5em;
+    padding-bottom: 1.5em;
+}
+
+.total-lines-tbody th {
+    font-size: 1.2rem;
+}
+
+.total-line th,
+.total-line td {
+    padding: 0.75em 0 1em 0;
+}
+
+.total-line-tfooter .total-line th,
+.total-line-tfooter .total-line td {
+    padding-top: 2em;
+    position: relative;
+}
+
+.total-line-tfooter {
+    border-top: 1px solid #e2e2e2;
+}
+
+.section {
+    position: relative;
+}
+
+.section-title {
+    font-size: 1.48em;
+    padding: 0;
+}
+
+.section-content::after {
+    clear: both;
+}
+
+.section-content::after,
+.section-content::before {
+    content: "";
+    display: table;
+}
+
+.content-box:first-of-type,
+.content-box-spacing:first-of-type {
+    margin-top: 0;
+}
+
+.content-box {
+    background: #fff;
+    background-clip: border-box;
+    background-clip: padding-box;
+    border: 1px lightgray solid;
+    border-radius: 5px;
+    color: #545454;
+}
+
+fieldset {
+    margin: 0;
+    margin-top: 0px;
+    padding: 0;
+    border: 0;
+}
+
+.radio-wrapper::after {
+    clear: both;
+}
+
+.radio-wrapper::after,
+.radio-wrapper::before {
+    content: "";
+    display: table;
+}
+
+.content-box-row::after {
+    clear: both;
+}
+
+.content-box-row::after,
+.content-box-row::before {
+    content: "";
+    display: table;
+}
+
+.content-box-row ~ .content-box-row {
+    border-top: 1px solid #d9d9d9;
+}
+
+.radio-wrapper.content-box-row {
+    margin-bottom: 0;
+    display: flex;
+}
+
+.display-table .radio-wrapper {
+    display: table;
+    box-sizing: border-box;
+    width: 100%;
+}
+
+.content-box-row {
+    padding: 1.14286em;
+    position: relative;
+}
+
+.content-box {
+    color: #545454;
+}
+
+.display-table .radio-label {
+    display: table-cell;
+}
+
+.radio-input {
+    padding-right: 0.75em;
+    white-space: nowrap;
+}
+
+.input-radio {
+    color: inherit;
+    font: inherit;
+    margin: 0;
+    padding: 0;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
+    -webkit-font-smoothing: inherit;
+    border: none;
+    background: transparent;
+    line-height: normal;
+}
+
+    .input-radio:checked::after {
+        transform: scale(1);
+        opacity: 1;
+    }
+
+    .input-radio::after {
+        width: 4px;
+        height: 4px;
+        margin-left: -2px;
+        margin-top: -2px;
+        background-color: #fff;
+        border-radius: 50%;
+    }
+
+    .input-radio::after {
+        content: "";
+        display: block;
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: scale(0.2);
+        transition: all 0.2s ease-in-out 0.1s;
+        opacity: 0;
+    }
+
+    .input-radio:checked {
+        border: none;
+        box-shadow: 0 0 0 10px #862633 inset;
+    }
+
+input[type="radio"] {
+    box-sizing: border-box;
+    padding: 0;
+}
+
+.input-radio {
+    border-radius: 50%;
+}
+
+.input-radio {
+    width: 18px;
+    height: 18px;
+    box-shadow: 0 0 0 0 #862633 inset;
+    transition: all 0.2s ease-in-out;
+    position: relative;
+    cursor: pointer;
+    vertical-align: -4px;
+    border: 1px solid;
+}
+
+.display-table .radio-label {
+    display: table-cell;
+    width: 100%;
+}
+
+label {
+    font-size: 1.1rem;
+}
+
+.radio-label {
+    cursor: pointer;
+    vertical-align: middle;
+}
+
+.content-box-emphasis {
+    font-weight: 700;
+    color: #333333;
+}
+
+.card-input-control {
+    width: 95%;
+    margin: 0 auto;
+}
+
+.card-input-half1 {
+    margin-left: 13px;
+    width: 94%;
+}
+
+.card-input-half2 {
+    margin-right: 13px;
+    width: 94%;
+}

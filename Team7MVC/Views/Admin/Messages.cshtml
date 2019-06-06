@@ -1,0 +1,188 @@
+﻿@model IEnumerable<Team7MVC.Models.Messages>
+
+@{
+    ViewBag.Title = "Messages Management";
+}
+
+<div class="content">
+    <div class="row">
+        <div class="col-md-12">
+            <div class="d-flex justify-content-between">
+                <div class="d-inline tool-left">
+                    <button class="btn btn-light dropdown-toggle" type="button" id="dropdownMenuButton"
+                            data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                        訊息排序
+                    </button>
+                    <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                        <a class="dropdown-item" href="#">ID</a>
+                        <a class="dropdown-item" href="#">問題種類</a>
+                        <a class="dropdown-item" href="#">訊息日期</a>
+                    </div>
+                </div>
+                <div class="d-inline tool-right">
+                    @*<i class="fas fa-plus"></i>*@
+                    @Html.ActionLink("新增訂單", "Create", "", new { @class = "btn btn-success" })
+                </div>
+            </div>
+            <div class="card">
+                <div class="card-header"></div>
+
+                <div class="card-body">
+                    <div class="table-responsive">
+                        <table class="table table-hover">
+                            <thead class="text-center">
+                                <tr>
+                                    <th>
+                                        @Html.DisplayNameFor(model => model.Id)
+                                    </th>
+                                    <th>
+                                        @Html.DisplayNameFor(model => model.Name)
+                                    </th>
+                                    <th>
+                                        @Html.DisplayNameFor(model => model.Email)
+                                    </th>
+                                    <th>
+                                        @Html.DisplayNameFor(model => model.Phone)
+                                    </th>
+                                    <th>
+                                        @Html.DisplayNameFor(model => model.QuestionCategory)
+                                    </th>
+                                    <th>
+                                        @Html.DisplayNameFor(model => model.Comments)
+                                    </th>
+                                    <th>
+                                        @Html.DisplayNameFor(model => model.Datetime)
+                                    </th>
+                                    <th></th>
+                                </tr>
+
+                            </thead>
+                            <tbody>
+                                @foreach (var item in Model)
+                                {
+                                    <tr>
+                                        <td class="text-center">
+                                            @Html.DisplayFor(modelItem => item.Id)
+                                        </td>
+                                        <td class="text-center">
+                                            @Html.DisplayFor(modelItem => item.Name)
+                                        </td>
+                                        <td class="text-center">
+                                            @Html.DisplayFor(modelItem => item.Email)
+                                        </td>
+                                        <td class="text-center">
+                                            @Html.DisplayFor(modelItem => item.Phone)
+                                        </td>
+                                        <td class="text-center">
+                                            @Html.DisplayFor(modelItem => item.QuestionCategory)
+                                        </td>
+                                        <td class="text-center">
+                                            @Html.DisplayFor(modelItem => item.Comments)
+                                        </td>
+                                        <td class="text-center">
+                                            @Html.DisplayFor(modelItem => item.Datetime)
+                                        </td>
+                                        <td>
+                                            @*@Html.ActionLink("回覆", "Edit", new { id = item.Id }, new { @class = "btn btn-primary" })*@
+                                            <a class="btn btn-primary"></a>
+                                            @Html.ActionLink("完成", "Delete","Customer", new { id = item.Id }, new { @class = "btn btn-danger" })
+                                        </td>
+                                    </tr>
+                                }
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="modal fade" id="user-Modal" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle"
+     aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <ul class="nav nav-pills">
+                    <li class="nav-item">
+                        <a class="nav-link active" href="#pills-login" data-toggle="pill">登入</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#pills-singup" data-toggle="pill">註冊</a>
+                    </li>
+                </ul>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body tab-content">
+                <form class="tab-pane fade show active" id="pills-login">
+                    <div class="form-group">
+                        <label for="loginInputEmail">Email</label>
+                        <input type="email" class="form-control" id="loginInputEmail"
+                               aria-describedby="emailHelp" placeholder="請輸入 email">
+                    </div>
+                    <div class="form-group">
+                        <label for="loginInputPassword">密碼</label>
+                        <input type="password" class="form-control" id="loginInputPassword" placeholder="請輸入密碼">
+                        <small id="passwordHelp" class="form-text text-muted">6 ~ 30個英數字元，分大小寫</small>
+                    </div>
+                    <div class="form-group">
+                        <a class="" href="#">Email登入</a> | <a class="" href="#">忘記密碼</a>
+                    </div>
+                    <button type="submit" class="btn btn-success btn-block">登入</button>
+                </form>
+                <form class="tab-pane fade" id="pills-singup">
+                    <div class="form-group">
+                        <label for="singupInputEmail">Email</label>
+                        <input type="email" class="form-control" id="singupInputEmail"
+                               aria-describedby="emailHelp" placeholder="請輸入 email">
+                    </div>
+                    <div class="form-group">
+                        <label for="singupInputPassword1">密碼</label>
+                        <input type="password" class="form-control" id="singupInputPassword1" placeholder="請輸入密碼">
+                        <small id="passwordHelp" class="form-text text-muted">6 ~ 30個英數字元，分大小寫</small>
+                    </div>
+                    <div class="form-group">
+                        <label for="singupInputPassword2">再次輸入密碼</label>
+                        <input type="password" class="form-control" id="singupInputPassword2" placeholder="請再次輸入密碼">
+                    </div>
+                    <div class="form-group">
+                        <label for="singupInputName">姓名</label>
+                        <input type="email" class="form-control" id="singupInputName" placeholder="請輸入姓名">
+                    </div>
+                    <div class="form-group">
+                        <input type="checkbox" id="checkboxAgree">
+                        <label for="checkboxAgree">
+                            我以閱讀並同意信義房屋網站的
+                            <a href="#">服務條款</a>與
+                            <a href="#">隱私權聲明</a>
+                        </label>
+                    </div>
+                    <button type="submit" class="btn btn-success btn-block">註冊</button>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+
+@section JQ {
+    <script>
+        $(document).ready(function () {
+
+            $("li").each(function () {
+
+                if ($(this).hasClass("active")) {
+                    $(this).removeClass("active");
+                }
+
+            });
+
+            $("#messages").addClass("active");
+
+            $("li").on("click", function () {
+                $("#messages").removeClass("active");
+                $(this).addClass("active");
+            });
+        });
+    </script>
+}

@@ -1,0 +1,280 @@
+﻿@model List<Products>
+
+@{
+    ViewBag.Title = "ProductPage";
+    string str = ".jpg";
+}
+
+@section CSS
+{
+    <link href="~/Assets/css/ProductsPageStyles.css" rel="stylesheet" />
+}
+
+
+
+    <div style="margin: 8rem auto 6rem;">
+        <p class="text-center h4 mt-3" style="color:dimgrey;"><i>─ 我們的威士忌 ─</i></p>
+        <p class="text-center h2 my-4">探索我們的單一麥芽威士忌</p>
+        <p class="text-center h5 mb-3" style="color:dimgrey;" v>
+            每一款 Macallan 單一麥芽威士忌均展現出自 1824 年以來，我們對於製桶與釀酒工藝無人能及的堅持。
+        </p>
+    </div>
+
+<div id="exhibit" class="row m-0 p-0 mb-5">
+    <!-- 選單 -->
+    <div id="sidenav" class="col-2 pl-4 grid_9 alpha">
+
+
+        <h3>商品 Products</h3>
+        <dl>
+            <dt>@Html.ActionLink("所有商品", "ProductPage", new { Id = 4 })</dt>
+            <dt>@Html.ActionLink("最新商品", "ProductPage", new { Id = 1 })</dt>
+            <dt>@Html.ActionLink("熱門商品", "ProductPage", new { Id = 2 })</dt>
+            <dt>@Html.ActionLink("高價稀有品", "ProductPage", new { Id = 3 })</dt>
+        </dl>
+        <hr>
+        <h3>產區 Area</h3>
+
+        @using (Html.BeginForm("ProductPage", "Wine"))
+        {
+            <div class="form-group form-check">
+                <input type="checkbox" name="Origin" class="form-check-input" id="法國/波爾多" value="法國 / 波爾多">
+                <label class="form-check-label" for="法國/波爾多">法國/波爾多</label>
+            </div>
+            <div class="form-group form-check">
+                <input type="checkbox" name="Origin" class="form-check-input" id="法國/勃根地" value="法國 / 勃根地">
+                <label class="form-check-label" for="法國/勃根地">法國/勃根地</label>
+            </div>
+            <div class="form-group form-check">
+                <input type="checkbox" name="Origin" class="form-check-input" id="法國/香檳區" value="法國 / 香檳區">
+                <label class="form-check-label" for="法國/香檳區">法國/香檳區</label>
+            </div>
+            <div class="form-group form-check">
+                <input type="checkbox" name="Origin" class="form-check-input" id="日本" value="日本">
+                <label class="form-check-label" for="日本">日本</label>
+            </div>
+            <div class="form-group form-check">
+                <input type="checkbox" name="Origin" class="form-check-input" id="智利" value="智利">
+                <label class="form-check-label" for="智利">智利</label>
+            </div>
+            <div class="form-group form-check">
+                <input type="checkbox" name="Origin" class="form-check-input" id="義大利" value="義大利">
+                <label class="form-check-label" for="義大利">義大利</label>
+            </div>
+            <div class="form-group form-check">
+                <input type="checkbox" name="Origin" class="form-check-input" id="紐西蘭" value="紐西蘭">
+                <label class="form-check-label" for="紐西蘭">紐西蘭</label>
+            </div>
+            <div class="form-group form-check">
+                <input type="checkbox" name="Origin" class="form-check-input" id="澳洲" value="澳洲">
+                <label class="form-check-label" for="澳洲">澳洲</label>
+            </div>
+            <button type="submit"><i class="fas fa-search"></i></button>
+        }
+
+        <hr>
+        <h3>類型 Type</h3>
+
+        @using (Html.BeginForm("ProductPage", "Wine"))
+        {
+            <div class="form-group form-check">
+                <input type="checkbox" name="Category" class="form-check-input" id="紅酒" value="紅酒">
+                <label class="form-check-label" for="紅酒">紅酒</label>
+            </div>
+            <div class="form-group form-check">
+                <input type="checkbox" name="Category" class="form-check-input" id="白酒" value="白酒">
+                <label class="form-check-label" for="白酒">白酒</label>
+            </div>
+            <div class="form-group form-check">
+                <input type="checkbox" name="Category" class="form-check-input" id="甜酒/貴腐酒" value="甜酒 / 貴腐酒">
+                <label class="form-check-label" for="甜酒/貴腐酒">甜酒/貴腐酒</label>
+            </div>
+            <div class="form-group form-check">
+                <input type="checkbox" name="Category" class="form-check-input" id="氣泡酒/微氣泡/香檳" value="氣泡酒 / 微氣泡 / 香檳">
+                <label class="form-check-label" for="氣泡酒/微氣泡/香檳">氣泡酒/微氣泡/香檳</label>
+            </div>
+            <div class="form-group form-check">
+                <input type="checkbox" name="Category" class="form-check-input" id="粉紅酒" value="粉紅酒">
+                <label class="form-check-label" for="粉紅酒">粉紅酒</label>
+            </div>
+            <button type="submit"><i class="fas fa-search"></i></button>
+        }
+
+        <hr>
+        <h3>年份 Year</h3>
+        @using (Html.BeginForm("ProductPage", "Wine"))
+        {
+            <div class="row ml-1">
+                <input name="Year_s" type="text" style="width: 70px;height: 40px;" placeholder="年份(起)" onkeyup="value=value.replace(/[^\d]/g,'')">
+                <h3>~</h3>
+                <input name="Year_e" type="text" style="width: 70px;height: 40px;" placeholder="年份(訖)" onkeyup="value=value.replace(/[^\d]/g,'')">
+                <button type="submit"><i class="fas fa-search"></i></button>
+            </div>
+        }
+
+        <hr>
+        <h3>價格 Price</h3>
+        @using (Html.BeginForm("ProductPage", "Wine"))
+        {
+            <div class="row ml-1">
+                <input name="Price_s" type="text" style="width: 70px;height: 40px;" placeholder="價格(起)" onkeyup="value=value.replace(/[^\d]/g,'')">
+                <h3>~</h3>
+                <input name="Price_e" type="text" style="width: 70px;height: 40px;" placeholder="價格(訖)" onkeyup="value=value.replace(/[^\d]/g,'')">
+                <button type="submit"><i class="fas fa-search"></i></button>
+            </div>
+        }
+
+
+
+    </div>
+
+    <!-- 產品 -->
+    <div class="container col-9 bg-transparent">
+        <div class="row d-flex justify-content-between">
+            @*@for (int i = 1; i < 10; i++)
+                {
+                    <div class="product-block">
+
+                        <div class="product-img">
+                            <img class="picture-wine" src="~/Assets/img_Products/@i@str " alt="p_sherry_oak" title="p_sherry_oak" />
+
+                            <img class="picture-color" src="~/Assets/img_ProductPage/circle-hover.png">
+
+                            <img class="picture-nocolor" src="~/Assets/img_ProductPage/circle.jpg">
+                        </div>
+
+
+
+                        <div class="product-intro">
+                            <h3>Sherry Oak 系列</h3>
+                            <p>濃烈醇厚的單一麥芽威士忌，專門於精心挑選的 Oloroso（歐洛羅索）雪莉橡木桶中熟成，特色是風味深邃迷人，色澤自然出眾。</p>
+                            <p>Explore</p>
+                        </div>
+                    </div>
+                }*@
+
+            @foreach (var item in Model)
+            {
+                <div class="product-block">
+                    <a href="@Url.Action("ProductDetail","Product" , new { id = item.ProductID })">
+                        <div class="product-img">
+                            <img class="picture-wine" src="~/Assets/img_Products/@Html.DisplayFor(modelItem => item.Picture) " alt="p_sherry_oak" title="p_sherry_oak" />
+
+                            <img class="picture-color" src="~/Assets/img_ProductPage/circle-hover.png">
+
+                            <img class="picture-nocolor" src="~/Assets/img_ProductPage/circle.jpg">
+                        </div>
+                    </a>
+
+
+                    <div class="product-intro">
+                        <h3>
+                            Sherry Oak 系列 @ViewData[item.CategoryID.ToString()]
+                        </h3>
+                        <p>@Html.DisplayFor(modelItem => item.ProductName)</p>
+                        <p>Explore</p>
+                    </div>
+                </div>
+            }
+        </div>
+    </div>
+</div>
+@*<div class="jumbotron jumbotron-fluid my-0 "
+     style="text-align: center; background-image: url('../../Assets/img_Index/footer_subscribe_bg.jpg'); background-size: 100%;">
+    <p class="text-white">訂閱 THE MACALLAN 的最新消息</p>
+    <div class="input-group mx-auto" style="width: 26rem;">
+        <input type="text" class="form-control text-white" placeholder="輸入您的電子郵件地址"
+               aria-label="Recipient's username" aria-describedby="basic-addon2"
+               style="border: none; border-radius: 0; background-color: rgba(255,255,255,.1);">
+        <div class="input-group-append">
+            <button type="button" class="border border-dark bg-dark text-white" style="width: 8rem;">訂閱</button>
+        </div>
+    </div>
+</div>*@
+
+@*<footer class="row p-0 m-0" style="background:#000;">
+        <div class="col-3 mt-5 pl-5">
+            <img src="../../Assets/img_ProductPage/estate_logo_0.png" alt="">
+        </div>
+
+        <div class="col-3 mt-5 p-0">
+            <a href="">ABOUT US</a><br>
+            <a href="">INSIDE THE MACALLAN</a><br>
+            <a href="">THE SIX PILLARS</a><br>
+            <a href="">DISTILLERY</a><br>
+            <a href="">CAREERS</a><br>
+            <a href="">CONTACT US</a><br>
+            <a href="">NEWSLETTER</a><br>
+        </div>
+
+        <div class="col-3 mt-5 p-0">
+            <a href="">OUR WHISKY</a><br>
+            <a href="">EXPLORE OUR SINGLE MALTS</a><br>
+            <a href="">SHERRY OAK</a><br>
+            <a href="">DOUBLE CASK</a><br>
+            <a href="">TRIPLE CASK MATURED</a><br>
+            <a href="">THE QUEST COLLECTION</a><br>
+            <a href="">THE MASTERS DECANTER SERIES</a><br>
+            <a href="">FINE & RARE</a><br>
+            <a href="">LIMITED RELEASES</a><br>
+            <a href="">TRAVEL RETAIL EXCLUSIVES</a><br>
+            <a href="">PAST RELEASES</a><br>
+        </div>
+
+        <div class="col-3 mt-5 p-0">
+            <a href="">SHOP</a><br>
+            <a href="">FAQS</a><br>
+            <a href="">DELIVERY INFORMATION</a><br>
+            <a href="">RETURNS INFORMATION</a><br>
+            <a href="">CONTACT US</a><br>
+            <a href="">TERMS AND CONDITIONS OF SALE</a><br>
+            <a href="">DISTILLERY TOURS - FAQS</a><br>
+            <div class="d-flex mt-3" style="border-top: 2px; border-color: #fff;">
+                <a href="" style="color:#fff; width: 20%;"><i class="fab fa-instagram"></i></a>
+                <a href="" style="color:#fff; width: 20%;"><i class="fab fa-facebook-f"></i></a>
+                <a href="" style="color:#fff; width: 20%;"><i class="fab fa-twitter"></i></a>
+                <a href="" style="color:#fff; width: 20%;"><i class="fab fa-youtube"></i></a>
+            </div>
+        </div>
+
+        <div class="col-12 mt-5">
+            <div class="d-flex justify-content-around">
+                <a href="">Drink Responsibly</a>
+                <a href="">The Edrington Group</a>
+                <a href="">Privacy Policy</a>
+                <a href="">Terms of Use</a>
+            </div>
+            <p class="text-center mt-3" style="color: #fff;">© 2019 The Macallan Distillers Limited, The Macallan</p>
+        </div>
+
+    </footer>*@
+@*</body>*@
+
+@section JQuery
+{
+    <script>
+        $(function () {
+            $("header nav")
+                .removeClass("navbar-dark")
+                .addClass("navbar-light");
+            $("header a img").prop("src", "../Assets/img_Index/logo_dark.png");
+            $("header .nav-item > a")
+                .removeClass("text-white")
+                .addClass("text-dark");
+            $("#search-input")
+                .removeClass("whiteplaceholder")
+                .removeClass("text-white")
+                .addClass("blackplaceholder")
+                .addClass("text-dark");
+            $(window).scroll(function () {
+                var scrollVal = $(this).scrollTop();
+                if (scrollVal > 0) {
+                    $("header").addClass("fixed-header");
+                }
+                if (scrollVal == 0) {
+                    $("header").removeClass("fixed-header");
+                }
+            });
+        });
+    </script>
+}

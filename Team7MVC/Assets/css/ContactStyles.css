@@ -1,0 +1,84 @@
+body {
+    font-family: adobe-garamond-pro, times new roman;
+    background: #fff url('/Assets/img_ProductPage/bg_wood.jpg') center top no-repeat;
+    background-size: 100%;
+    margin: 0;
+}
+
+.container {
+    width: 800px;
+}
+
+.full-text {
+    padding: 0 2.5rem;
+    max-width: 56.25rem;
+    margin: 0 auto 70px;
+}
+
+p {
+    font-size: 1.25rem;
+    color: #4d4d4d;
+    margin: 0 0 1rem;
+}
+
+.input-item {
+    width: 100%;
+    margin: 5px 0 5px;
+}
+
+.form-control {
+    background: #f4f3f3;
+}
+
+small {
+    color: red;
+    font-size: 16px;
+}
+
+#submit {
+    color: #fff;
+    background: #862633;
+    margin: 40px auto 50px;
+    width: 70%;
+    height: 42px;
+}
+
+@media screen and (max-width:769px) {
+    h2 {
+        font-size: 28px;
+    }
+
+    .content {
+        width: 95%;
+        height: 85%;
+        margin: 0 auto;
+    }
+}
+
+@media screen and (max-width:576px) {
+    .container {
+        width: 450px;
+    }
+
+    h2 {
+        font-size: 25px;
+    }
+}
+
+@media screen and (max-width:449px) {
+    .container {
+        width: 400px;
+    }
+}
+
+@media screen and (max-width:399px) {
+    .container {
+        width: 350px;
+    }
+}
+
+@media screen and (max-width:366px) {
+    .container {
+        width: 300px;
+    }
+}

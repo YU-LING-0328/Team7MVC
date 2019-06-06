@@ -1,0 +1,136 @@
+﻿@model IEnumerable<ShopListsViewModel>
+
+@{
+    ViewBag.Title = "ShoppingCart";
+    int count = 1;
+    decimal SumMoney = 0;
+    foreach (var item in Model)
+    {
+        SumMoney += item.TotalCost;
+    }
+}
+
+
+@section CSS
+{
+    <link href="~/Assets/css/shopping-cart.css" rel="stylesheet" />
+}
+<div class="Products-Detail" style="margin: 8rem 0 6rem;">
+    <div class="container">
+        <div class="Detail-path">
+            <ul class="path">
+                <li>
+                    <a href="#">Basket</a><i class="fas fa-chevron-right"></i>
+                </li>
+                <li>
+                    Information<i class="fas fa-chevron-right"></i>
+                </li>
+
+                <li>
+                    Shipping
+                </li>
+            </ul>
+        </div>
+    </div>
+    <!-- <div class="Detail-Step"> 進度條
+        <div class="container">
+            <ul class="progress">
+                <li class="active">step1</li>
+                <li>step2</li>
+                <li>step3</li>
+            </ul>
+        </div>
+
+    </div> -->
+    <div class="Detail">
+        <div class="container">
+
+            <table>
+                <tr class="Detail-row">
+                    <td class="Detail-table-title">序</td>
+                    <td class="Detail-table-title">商品名稱</td>
+                    <td class="Detail-table-title">年份</td>
+                    <td class="Detail-table-title">產地</td>
+                    <td class="Detail-table-title">單價</td>
+                    <td class="Detail-table-title">數量</td>
+                    <td class="Detail-table-title">小計</td>
+                    <td class="Detail-table-title">刪除</td>
+                </tr>
+
+                @foreach (var item in Model)
+                {
+                    @*@Html.Partial("ShoppingCartPartial")*@
+                    <tr>
+                        <!-- <td colspan="8" class="Detail-table-row">您的清單內目前沒有任何商品</td> -->
+                        <td class="Detail-table-title">@count</td>
+                        @{ count++;}
+                        <td class="product-name">
+                            @*<img src="~/Assets/img_ShoppingCart/000000000001.jpg" alt="商品">*@
+                            <img src="~/Assets/img_Products/@Html.DisplayFor(modelItem => item.Picture)" alt="商品" />
+                            <a href="#">
+                                @Html.DisplayFor(modelItem => item.ProductName)
+                            </a>
+                        </td>
+                        <td class="Detail-table-title">@Html.DisplayFor(modelItem => item.Year)</td>
+                        <td class="Detail-table-title">@Html.DisplayFor(modelItem => item.Origin)</td>
+                        <td class="Detail-table-title">@Html.DisplayFor(modelItem => item.Price)</td>
+                        <td class="Detail-table-title">
+                            <select class="custom-select" id="inputGroupSelect01" name="orderQty">
+                                <option value="00" hidden>@Html.DisplayFor(modelItem => item.Quantity)</option>
+                                @for (int i = 1; i <= item.Stock; i++)
+                                {
+                                    <option>@i </option>
+                                }
+                            </select>
+                        </td>
+                        <td class="Detail-table-title">@Html.DisplayFor(modelItem => item.TotalCost)</td>
+                        <td class="Detail-table-title">
+                            <i class="far fa-trash-alt"></i>
+                        </td>
+                    </tr>
+                }
+                <tr class="Detail-price">
+                    <td colspan="6">商品金額總計</td>
+                    <td>@SumMoney</td>
+                    <td></td>
+                </tr>
+            </table>
+            <div class="Detail-btn">
+                @using (Html.BeginForm())
+                {
+                    <input type="submit" class="btn btn-light" value="CheckOut" />
+                }
+            </div>
+        </div>
+    </div>
+
+</div>
+
+@section JQuery
+{
+    <script>
+        $(function () {
+            $("header nav")
+                .removeClass("navbar-dark")
+                .addClass("navbar-light");
+            $("header a img").prop("src", "../Assets/img_Index/logo_dark.png");
+            $("header .nav-item > a")
+                .removeClass("text-white")
+                .addClass("text-dark");
+            $("#search-input")
+                .removeClass("whiteplaceholder")
+                .removeClass("text-white")
+                .addClass("blackplaceholder")
+                .addClass("text-dark");
+            $(window).scroll(function () {
+                var scrollVal = $(this).scrollTop();
+                if (scrollVal > 0) {
+                    $("header").addClass("fixed-header");
+                }
+                if (scrollVal == 0) {
+                    $("header").removeClass("fixed-header");
+                }
+            });
+        });
+    </script>
+}

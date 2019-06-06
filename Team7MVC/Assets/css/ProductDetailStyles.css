@@ -1,0 +1,38 @@
+﻿body {
+    background: #fff url("/Assets/img_ProductPage/bg_wood.jpg") center top no-repeat;
+}
+
+div.product-detail {
+    margin: 6rem auto 6rem;
+}
+
+.product-image img {
+    height: 80vh;
+}
+
+.product-content .unitPrice {
+    padding: 15px 20px;
+    background: #fafafa;
+}
+
+.product-content .unitPrice .form-group {
+    font-size: 40px;
+}
+
+.product-content ul .form-group {
+    font-size: 18px;
+    color: #4d4d4d;
+}
+
+.product-content div {
+    font-size: 18px;
+    color: #4d4d4d;
+}
+
+.product-content .title {
+    width: 110px;
+}
+
+.product-content button {
+    background: #862633;
+}

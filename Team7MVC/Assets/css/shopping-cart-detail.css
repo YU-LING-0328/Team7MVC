@@ -1,0 +1,80 @@
+.check-icon {
+    text-align: left;
+    display: flex;
+    width: 51.55%;
+  
+}
+
+.check-icon i {
+    margin: 5px 15px 0 135px;
+}
+
+.fa-check-circle {
+    font-size: 40px;
+}
+
+.pay-main {
+    margin-top: 25px;
+}
+
+.order-Numbering {
+    margin-bottom: 5px;
+    font-size: 16px;
+    color: #5a5858;
+}
+
+.order-who {
+    display: flex;
+}
+
+.order-who h1 {
+    font-size: 25px;
+    margin-bottom: 20px
+}
+
+.payfor-detail {
+    border: 2px solid #e2e2e2;
+    padding: 15px;
+    border-radius: 4px;
+    background: white;
+}
+
+.payfor-title {
+    font-size: 17px !important;
+    text-align: left !important;
+}
+
+p {
+    text-align: left;
+    margin-bottom: 12px;
+}
+
+.customer-information {
+    margin: 20px 0;
+    border: 2px solid #e2e2e2;
+    padding: 15px;
+    border-radius: 4px;
+    background: white;
+    display: flex;
+}
+
+.payfor-detail h1 {
+    font-size: 20px;
+    text-align: left;
+    margin-bottom: 15px;
+}
+
+h2 {
+    font-size: 17px !important;
+    text-align: left;
+    padding: 0 !important;
+}
+
+.information-right {
+    margin: 0 auto;
+    text-align: right;
+}
+
+td {
+    padding-bottom: 20px;
+}

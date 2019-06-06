@@ -1,0 +1,207 @@
+﻿@model OrderDetailViewModel
+
+@{
+    ViewBag.Title = "OrderDetail";
+    var customerDetails = Model.customerDetails;
+    var productDetails = Model.productDetails;
+    decimal Total = 0;
+}
+@section CSS
+{
+    <link href="~/Assets/css/shopping-cart-detail.css" rel="stylesheet" />
+    <link href="~/Assets/css/shopping-cart-pay.css" rel="stylesheet" />
+}
+
+<div class="Products-Detail">
+    <div class="pay-main">
+        <div class="check-icon">
+            <i class="far fa-check-circle"></i>
+            <div>
+                <p class="order-Numbering">Order #2000</p>
+                <div class="order-who">
+                    <h1>
+                        Thank you
+                        <h1>&nbspMina!</h1>
+                    </h1>
+                </div>
+            </div>
+        </div>
+        <div class="container">
+            <div class="pay-main-left">
+                <div class="payfor-detail">
+                    <h1 class="payfor-title">Your order is confirmed</h1>
+                    <p>戶名:麥卡倫酒廠</p>
+                    <p>玉山銀行敦南分行(808)0314-940-038075</p>
+                    <p><i class="fas fa-caret-right"></i> 匯款完成後請將姓名銀行代碼/名稱帳號末5碼匯款金額匯款日期及連絡電話Eamil至pressenquiries@themacallan.com,並於標註Bank Deposit</p>
+                    <p><i class="fas fa-caret-right"></i> 請在48小時以內完成付款,否則將自動取消訂單</p>
+                    <p><i class="fas fa-caret-right"></i>若有問題請撥打連絡電話:+44 (0)1340 318 000</p>
+                </div>
+                <div class="customer-information">
+                    <table>
+                        <tr>
+                            <td colspan="2">
+                                <h1>Customer information</h1>
+                            </td>
+                        </tr>
+
+
+                        <tr>
+                            <td>
+                                <h2>Contact information</h2>
+                                <p> @customerDetails.Email</p>
+                            </td>
+                            <td>
+                                <h2>Payment method</h2>
+                                <p>  @customerDetails.PayWay</p>
+                            </td>
+                        </tr>
+
+                        <tr>
+                            <td>
+                                <h2>Shipping address</h2>
+                                <p>   @customerDetails.CustomerName</p>
+                                <p> @customerDetails.City</p>
+                                <p>   @customerDetails.Address</p>
+                                <p>
+                                    @customerDetails.Phone
+                                </p>
+
+                            </td>
+                            <td>
+                                <h2>Billing address</h2>
+                                <p>   @customerDetails.ShipName</p>
+                                <p> @customerDetails.ShipCity</p>
+                                <p>   @customerDetails.ShipAddress</p>
+                                <p>
+                                    @customerDetails.ShipPhone
+                                </p>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <h2>Shipping method</h2>
+                                <p>   @customerDetails.Freight</p>
+                            </td>
+
+                        </tr>
+
+                    </table>
+                </div>
+                <div class="form-group">
+                    <div class="form-btn">
+                        <a href="#">Need help? Contact us</a>
+                        <button type="submit" class="btn">Complete order</button>
+                    
+                    </div>
+                </div>
+                <div class="form-group footer">
+                    <div class="form-footer">
+                        <p>All rights reserved The Macallan</p>
+                    </div>
+                </div>
+            </div>
+            <div class="pay-main-right">
+                <div class="main-right-content">
+                    <div class="order-summary">
+                        <div class="order-summary-sections">
+                            <div class="order-summary-section product-list">
+                                <div class="order-summary-sections-content">
+                                    <table class="product-table">
+                                        <thead>
+                                            <tr>
+                                                <th scope="col">
+                                                    <span class="visually-hidden">Product image</span>
+                                                </th>
+                                                <th scope="col">
+                                                    <span class="visually-hidden">Description</span>
+                                                </th>
+                                                <th scope="col">
+                                                    <span class="visually-hidden">Quantity</span>
+                                                </th>
+                                                <th scope="col">
+                                                    <span class="visually-hidden">Price</span>
+                                                </th>
+                                            </tr>
+                                        </thead>
+                                        <tbody data-order-summary-section="line-item">
+                                            @foreach (var item in productDetails)
+                                            {
+                                                <tr class="product " data-product-id="" data-variant-id="" data-product-type="" data-customer-ready-visible="">
+                                                    <td class="product-image">
+                                                        <div class="product-thumbnail">
+                                                            <div class="product-thumbnail-wrapper">
+                                                                <img class="product-thumbnail-image" src="~/Assets/img_Products/@Html.DisplayFor(modelItem => item.Picture)" alt="">
+                                                            </div>
+                                                            <span class="product-thumbnail-quantity" aria-hidden="true">  @Html.DisplayFor(modelItem => item.Quantity)</span>
+                                                        </div>
+                                                    </td>
+                                                    <td class="product-description">
+                                                        <span class="product-description-name">
+                                                            @Html.DisplayFor(modelItem => item.ProductName)
+                                                        </span>
+                                                    </td>
+                                                    <td class="product-price">
+                                                        <span class="order-summary-emphasis">$@Html.DisplayFor(modelItem => item.UnitPrice)</span>
+                                                    </td>
+                                                </tr>
+                                            }
+                                        </tbody>
+                                    </table>
+                                </div>
+                            </div>
+
+                            <div class="order-summary-section total-lines">
+                                <table class="total-lines-table">
+                                    <caption class="visually-hidden">Cost summary</caption>
+                                    <thead>
+                                        <tr>
+                                            <th scope="col">
+                                                <span class="visually-hidden">Description</span>
+                                            </th>
+                                            <th scope="col">
+                                                <span class="visually-hidden">Price</span>
+                                            </th>
+                                        </tr>
+                                    </thead>
+                                    <tbody class="total-lines-tbody">
+                                        @foreach (var item in productDetails)
+                                        {
+                                            Total += item.UnitPrice * item.Quantity;
+                                        }
+                                        <tr class="total-line">
+                                            <th class="total-line-name" scope="row">Price</th>
+                                            <td class="total-line-price">
+                                                <span class="order-summary-emphasis" data-checkout-subtotal-price-target="">$@Total </span>
+                                            </td>
+                                        </tr>
+
+                                        <tr class="total-line total-line-shipping">
+                                            <th class="total-line-name" scope="row">Shipping</th>
+                                            <td class="total-line-price">
+                                                <span class="order-summary-small-text" data-checkout-total-shipping-target="0">$@customerDetails.Freight</span>
+                                            </td>
+                                        </tr>
+
+                                    </tbody>
+                                    <tfoot class="total-line-tfooter">
+
+                                        <tr class="total-line">
+                                            <th class="total-line-name payment-due-lable" scope="row">
+                                                <span class="payment-due-lable-total" style="font-size: 1.2rem;">Total</span>
+                                            </th>
+                                            @{Total = Total + customerDetails.Freight;}
+                                            <td class="total-line-price payment-due">
+                                                <span class="payment-dueprice" data-checkout-payment-due-target="" style="font-size: 1.2rem;">$@Total</span>
+                                            </td>
+                                        </tr>
+
+                                    </tfoot>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

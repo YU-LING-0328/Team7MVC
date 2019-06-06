@@ -1,0 +1,146 @@
+﻿@model Products
+
+@{
+    ViewBag.Title = "ProductDetail";
+}
+
+@section CSS
+{
+    <link href="~/Assets/css/ProductDetailStyles.css" rel="stylesheet" />
+}
+
+<div class="container product-detail">
+    @using (Html.BeginForm("ProductDetail", "Product", new { ProductId = Model.ProductID }))
+    {
+        @Html.AntiForgeryToken()
+        <div class="container">
+            <div class="form-horizontal">
+                @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+                <div class="row mb-5">
+
+                    <div class="product-image col-6 text-center">
+                        <img src="~/Assets/img_Products/@Html.DisplayFor(model => model.Picture)" />
+                    </div>
+
+                    <div class="product-content col-6">
+                        <h1 class="name form-group h2 m-0">
+                            @Html.DisplayFor(model => model.ProductName)
+                        </h1>
+
+                        <div class="unitPrice d-flex align-items-center my-4">
+                            <h2 class="form-group text-danger m-0">$</h2>
+                            <div class="form-group text-danger font m-0">
+                                @Html.DisplayFor(model => model.UnitPrice)
+                            </div>
+                        </div>
+
+                        <ul class="list-unstyled mb-5">
+                            <li class="id d-flex align-items-center">
+                                <h2 class="title form-group m-0">
+                                    @Html.DisplayNameFor(model => model.ProductID)
+                                </h2>
+                                <div class="form-group m-0">
+                                    @Html.DisplayFor(model => model.ProductID)
+                                </div>
+                            </li>
+                            <li><hr /></li>
+                            <li class="origin d-flex align-items-center">
+                                <h2 class="title form-group m-0">
+                                    @Html.DisplayNameFor(model => model.Origin)
+                                </h2>
+                                <div class="form-group m-0">
+                                    @Html.DisplayFor(model => model.Origin)
+                                </div>
+                            </li>
+                            <li><hr /></li>
+                            <li class="year d-flex align-items-center">
+                                <h2 class="title form-group m-0">
+                                    @Html.DisplayNameFor(model => model.Year)
+                                </h2>
+                                <div class="form-group m-0">
+                                    @Html.DisplayFor(model => model.Year)
+                                </div>
+                            </li>
+                            <li><hr /></li>
+                            <li class="capacity d-flex align-items-center">
+                                <h2 class="title form-group m-0">
+                                    @Html.DisplayNameFor(model => model.Capacity)
+                                </h2>
+                                <div class="form-group m-0">
+                                    @Html.DisplayFor(model => model.Capacity) ml
+                                </div>
+                            </li>
+                            <li><hr /></li>
+                            <li class="quantity d-flex align-items-center">
+                                <h2 class="title form-group m-0">數量</h2>
+                                <div class="form-group my-0 mr-3">
+                                    <input name="buyQty" id="buyQty" type="number" class="form-control text-center"
+                                           value="1" min="1" max="@Html.DisplayFor(model => model.Stock)">
+                                </div>
+                                <div class="form-group d-inline-flex m-0">
+                                    還剩下
+                                    <div class="form-group m-0">
+                                        @Html.DisplayFor(model => model.Stock)
+                                    </div>件
+                                </div>
+                            </li>
+                        </ul>
+
+                        <div class="form-group">
+                            <div class="col-12 p-0">
+                                <button type="submit" class="btn btn-danger mr-3" id="submit">
+                                    <i class="fas fa-shopping-bag mr-3"></i>BUY NOW
+                                </button>
+                                <a id="back" class="btn btn-secondary" href="@Url.Action("Index","Product")">
+                                    <i class="fas fa-arrow-left mr-3"></i>BACK
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="product-content col-12">
+                        <div class="introduction">
+                            <h2 class="form-group m-0">
+                                @Html.DisplayNameFor(model => model.Introduction)
+                            </h2>
+                            <hr />
+                            <div class="form-group m-0">
+                                @Html.DisplayFor(model => model.Introduction)
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    }
+</div>
+
+@section JQuery
+{
+    <script>
+        $(function () {
+            $("header nav")
+                .removeClass("navbar-dark")
+                .addClass("navbar-light");
+            $("header a img").prop("src", "../../Assets/img_Index/logo_dark.png");
+            $("header .nav-item > a")
+                .removeClass("text-white")
+                .addClass("text-dark");
+            $("#search-input")
+                .removeClass("whiteplaceholder")
+                .removeClass("text-white")
+                .addClass("blackplaceholder")
+                .addClass("text-dark");
+            $(window).scroll(function () {
+                var scrollVal = $(this).scrollTop();
+                if (scrollVal > 0) {
+                    $("header").addClass("fixed-header");
+                }
+                if (scrollVal == 0) {
+                    $("header").removeClass("fixed-header");
+                }
+            });
+        });
+    </script>
+}

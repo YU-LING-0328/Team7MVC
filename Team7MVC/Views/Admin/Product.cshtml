@@ -1,0 +1,176 @@
+﻿@model IEnumerable<Team7MVC.Models.Products>
+
+@{
+    ViewBag.Title = "Products Management";
+}
+
+<div class="content">
+    <div class="row">
+        <div class="col-md-12">
+            <div class="d-flex justify-content-between">
+                <div class="d-inline tool-left">
+                    @using (Html.BeginForm())
+                    {
+                        <div class="dropdown">
+                            <button class="btn btn-secondary dropdown-toggle" type="submit" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                排序方式
+                            </button>
+                            <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                                <button class="dropdown-item" id="SortBy" name="SortBy" value="ProductID">商品ID</button>
+                                <button class="dropdown-item" id="SortBy" name="SortBy" value="Origin">產地</button>
+                                <button class="dropdown-item" id="SortBy" name="SortBy" value="Year">年份</button>
+                                <button class="dropdown-item" id="SortBy" name="SortBy" value="UnitPrice desc">價格(高 ~ 低)</button>
+                                <button class="dropdown-item" id="SortBy" name="SortBy" value="Stock">庫存(少 ~ 多)</button>
+                            </div>
+                        </div>
+                    }
+
+                    @*<button class="btn btn-light dropdown-toggle" type="button" id="dropdownMenuButton"
+                data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+            商品排序
+        </button>
+        <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+            <a class="dropdown-item" href="#">商品ID</a>
+            <a class="dropdown-item" href="#">類別ID</a>
+            <a class="dropdown-item" href="#">年份</a>
+            <a class="dropdown-item" href="#">庫存</a>
+            <a class="dropdown-item" href="#">價格</a>
+            <a class="dropdown-item" href="#">銷售總金額</a>
+        </div>*@
+                </div>
+                <div class="d-inline tool-right">
+                    @*<i class="fas fa-plus"></i>*@
+                    @Html.ActionLink("新增商品", "ProductCreate", "", new { @class = "btn btn-success" })
+                </div>
+            </div>
+            <div class="card">
+                <div class="card-header"></div>
+                <div class="card-body">
+                    <div class="table-responsive">
+                        <table class="table table-hover">
+                            <thead class="">
+                                <tr>
+                                    <th>
+                                        @Html.DisplayNameFor(model => model.ProductID)
+                                    </th>
+                                    <th>
+                                        @Html.DisplayNameFor(model => model.ProductName)
+                                    </th>
+                                    <th>
+                                        @Html.DisplayNameFor(model => model.Origin)
+                                    </th>
+                                    <th>
+                                        @Html.DisplayNameFor(model => model.Year)
+                                    </th>
+                                    <th>
+                                        @Html.DisplayNameFor(model => model.Capacity)
+                                    </th>
+                                    <th>
+                                        @Html.DisplayNameFor(model => model.UnitPrice)
+                                    </th>
+                                    <th>
+                                        @Html.DisplayNameFor(model => model.Stock)
+                                    </th>
+                                    @*<th>
+                                            @Html.DisplayNameFor(model => model.Grade)
+                                        </th>
+                                        <th>
+                                            @Html.DisplayNameFor(model => model.Variety)
+                                        </th>
+                                        <th>
+                                            @Html.DisplayNameFor(model => model.Area)
+                                        </th>*@
+                                    <th>
+                                        @Html.DisplayNameFor(model => model.Picture)
+                                    </th>
+                                    <th>
+                                        @Html.DisplayNameFor(model => model.CategoryID)
+                                    </th>
+                                    <th></th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                @foreach (var item in Model)
+                                {
+                                    <tr>
+                                        <td>
+                                            @Html.DisplayFor(modelItem => item.ProductID)
+                                        </td>
+                                        <td>
+                                            @Html.DisplayFor(modelItem => item.ProductName)
+                                        </td>
+                                        <td>
+                                            @Html.DisplayFor(modelItem => item.Origin)
+                                        </td>
+                                        <td>
+                                            @Html.DisplayFor(modelItem => item.Year)
+                                        </td>
+                                        <td>
+                                            @Html.DisplayFor(modelItem => item.Capacity)
+                                        </td>
+                                        <td>
+                                            @Html.DisplayFor(modelItem => item.UnitPrice)
+                                        </td>
+                                        <td>
+                                            @Html.DisplayFor(modelItem => item.Stock)
+                                        </td>
+                                        @*<td>
+                                                @Html.DisplayFor(modelItem => item.Grade)
+                                            </td>
+                                            <td>
+                                                @Html.DisplayFor(modelItem => item.Variety)
+                                            </td>
+                                            <td>
+                                                @Html.DisplayFor(modelItem => item.Area)
+                                            </td>*@
+                                        <td>
+                                            @Html.DisplayFor(modelItem => item.Picture)
+                                        </td>
+                                        <td>
+                                            @Html.DisplayFor(modelItem => item.CategoryID)
+                                        </td>
+                                        <td>
+                                            @Html.ActionLink("編輯", "ProductEdit", new { id = item.ProductID }, new { @class = "btn btn-primary" })
+                                            @Html.ActionLink("刪除", "ProductDelete", new { id = item.ProductID }, new { @class = "btn btn-danger" })
+                                        </td>
+                                    </tr>
+                                }
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+@*@section CSS
+    {
+        <style>
+            .table td {
+                vertical-align: middle;
+            }
+        </style>
+    }*@
+
+@section JQ {
+    <script>
+        $(document).ready(function () {
+
+            $("li").each(function () {
+
+                if ($(this).hasClass("active")) {
+                    $(this).removeClass("active");
+                }
+
+            });
+
+            $("#products").addClass("active");
+
+            $("li").on("click", function () {
+                $("#products").removeClass("active");
+                $(this).addClass("active");
+            });
+        });
+    </script>
+}
