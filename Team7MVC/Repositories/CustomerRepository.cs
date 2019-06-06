@@ -78,5 +78,18 @@ namespace Team7MVC.Repositories
                 conn.Execute(sql, new { customers.Password, customers.NewPassword });
             }
         }
+
+        public List<Orders> OrderQuery(string Account)
+        {
+            List<Orders> orders;
+            using (conn)
+            {
+                string sql = @"select * from Orders
+                               where CustomerID = (select c.CustomerID from Customers c where Account = @Account)";
+                orders = conn.Query<Orders>(sql, new { Account = Account }).ToList();
+            }
+
+            return orders;
+        }
     }
 }

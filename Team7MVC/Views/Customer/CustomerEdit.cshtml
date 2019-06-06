@@ -9,12 +9,17 @@
         <div class="col-md-4">
             <div class="card card-user">
                 <div class="image">
-                    <img src="~/Assets/img_user/damir-bosnjak.jpg" alt="...">
+                    <img src="~/Assets/img_user/damir-bosnjak.jpg" alt="user-img-background">
                 </div>
                 <div class="card-body">
                     <div class="author">
-
-                        <img class="avatar border-gray" src="~/Assets/img_user/@Html.DisplayFor(model => model.Picture)" alt="@Html.DisplayFor(model => model.CustomerID)">
+                        <form>
+                            <img class="avatar border-gray" src="~/Assets/img_user/@Html.DisplayFor(model => model.Picture)" alt="@Html.DisplayFor(model => model.CustomerID)">
+                            <div class="form-group">
+                                <label for="exampleFormControlFile1">選擇圖片</label>
+                                <input type="file" class="form-control-file" id="exampleFormControlFile1">
+                            </div>
+                        </form>
                         <h5 class="title">@Html.DisplayFor(model => model.CustomerName)</h5>
 
                         <p class="description">

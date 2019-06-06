@@ -1,12 +1,12 @@
-﻿@model Team7MVC.Models.Customers
+﻿@*@model Team7MVC.Models.Customers*@
 
 <div class="sidebar" data-color="white" data-active-color="danger" style="top: 4.5rem;">
 
     <div class="logo">
         <a href="http://www.creative-tim.com" class="simple-text logo-mini">
-            <div class="logo-image-small">
+            @*<div class="logo-image-small">
                 <img src="~/Assets/img_user/@Html.DisplayFor(model => model.Picture)" alt="@Html.DisplayFor(model => model.CustomerID)">
-            </div>
+            </div>*@
         </a>
         <a href="http://www.creative-tim.com" class="simple-text logo-normal">
             @Html.ActionLink(User.Identity.Name, "CustomerEdit", "Customer", new { id = User.Identity.Name }, new { @class = "dropdown-item" })
@@ -15,7 +15,7 @@
     <div class="sidebar-wrapper">
         <ul class="nav">
             <li>
-                <a href="./user.html">
+                <a href="~/Customer/CustomerEdit">
                     <i class="nc-icon nc-single-02"></i>
                     <p>
                         My Account
@@ -23,7 +23,7 @@
                 </a>
             </li>
             <li class="active ">
-                <a href="./user.html">
+                <a href="~/Customer/CustomerEdit">
                     <i class="nc-icon nc-single-02"></i>
                     <p>
                         Personal Information
@@ -31,7 +31,7 @@
                 </a>
             </li>
             <li>
-                <a href="./user.html">
+                <a href="#">
                     <i class="nc-icon nc-single-02"></i>
                     @*銀行帳號/信用卡*@
                     <p>
@@ -40,7 +40,7 @@
                 </a>
             </li>
             <li>
-                <a href="./user.html">
+                <a href="~/Customer/ChangePassword">
                     <i class="nc-icon nc-single-02"></i>
                     @*更改密碼*@
                 <p>
@@ -49,7 +49,7 @@
                 </a>
             </li>
             <li>
-                <a href="./tables.html">
+                <a href="~/Customer/PurchaseList">
                     <i class="nc-icon nc-tile-56"></i>
                     <p>Purchase List</p>
                 </a>

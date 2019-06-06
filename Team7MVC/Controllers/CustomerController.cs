@@ -70,5 +70,12 @@ namespace Team7MVC.Controllers
             return RedirectToAction("ChangePassword");
 
         }
+
+        [HttpGet]
+        public ActionResult PurchaseList()
+        {
+            var orders = _repo.OrderQuery(User.Identity.Name);
+            return View(orders);
+        }
     }
 }
