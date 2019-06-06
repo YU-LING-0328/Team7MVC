@@ -40,22 +40,29 @@ namespace Team7MVC.Repositories
 
             return products;
         }
-
-        public List<Products> Getproducts(int? Id)
+        
+        public List<Products> GetNewProducts()
         {
             List<Products> products;
 
             using (conn)
             {
-                string sql = string.Empty;
-                if (Id == 1)
-                {
-                    sql = @"select * from Products
+                string sql = @"select * from Products
                             where Year = (select top 1 Year from Products order by Year desc)";
-                }
-                else if (Id == 2)
-                {
-                    sql = @"with t1 (ProductId, Total)
+
+                products = conn.Query<Products>(sql).ToList();
+            }
+
+            return products;
+        }
+
+        public List<Products> GetHotProducts()
+        {
+            List<Products> products;
+
+            using (conn)
+            {
+                string sql = @"with t1 (ProductId, Total)
                             as
                             (
 	                            select top 6 ProductID, SUM(Quantity) as Total 
@@ -67,16 +74,24 @@ namespace Team7MVC.Repositories
 		                    p.UnitPrice, p.Stock, p.Grade, p.Variety, p.Area, p.Picture, p.Introduction, p.CategoryID
                             from t1 as t
                             INNER JOIN Products as p on p.ProductID = t.ProductId";
-                }
-                else
-                {
-                    sql = @"select * from Products
-                            where UnitPrice >= 10000
-                            order by UnitPrice desc";
-                }
 
                 products = conn.Query<Products>(sql).ToList();
+            }
 
+            return products;
+        }
+
+        public List<Products> GetExpensiveProducts()
+        {
+            List<Products> products;
+
+            using (conn)
+            {
+                string sql = @"select * from Products
+                            where UnitPrice >= 10000
+                            order by UnitPrice desc";
+
+                products = conn.Query<Products>(sql).ToList();
             }
 
             return products;

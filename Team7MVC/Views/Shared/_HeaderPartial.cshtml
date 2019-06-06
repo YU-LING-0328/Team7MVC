@@ -18,7 +18,7 @@
                     <a class="nav-link text-white px-4" href="@Url.Action("Index","Product")">SHOP</a>
                 </li>
             </ul>
-            @using (Html.BeginForm("ProductPage", "Wine"))
+            @using (Html.BeginForm("SearchProductName", "Product"))
             {
                 <div class="input-group mr-5 px-3" id="header-search">
                     <input type="text" class="form-control text-white border-dark whiteplaceholder my-auto" placeholder="Search"
