@@ -2,7 +2,6 @@
 
 @{
     ViewBag.Title = "ProductPage";
-    string str = ".jpg";
 }
 
 @section CSS
@@ -27,15 +26,15 @@
 
         <h3>商品 Products</h3>
         <dl>
-            <dt>@Html.ActionLink("所有商品", "ProductPage", new { Id = 4 })</dt>
-            <dt>@Html.ActionLink("最新商品", "ProductPage", new { Id = 1 })</dt>
-            <dt>@Html.ActionLink("熱門商品", "ProductPage", new { Id = 2 })</dt>
-            <dt>@Html.ActionLink("高價稀有品", "ProductPage", new { Id = 3 })</dt>
+            <dt>@Html.ActionLink("所有商品", "Index", "Product")</dt>
+            <dt>@Html.ActionLink("最新商品", "NewProduct", "Product")</dt>
+            <dt>@Html.ActionLink("熱門商品", "HotProduct", "Product")</dt>
+            <dt>@Html.ActionLink("高價稀有品", "ExpensiveProduct", "Product")</dt>
         </dl>
         <hr>
         <h3>產區 Area</h3>
 
-        @using (Html.BeginForm("ProductPage", "Wine"))
+        @using (Html.BeginForm("ProductOrigin", "Product"))
         {
             <div class="form-group form-check">
                 <input type="checkbox" name="Origin" class="form-check-input" id="法國/波爾多" value="法國 / 波爾多">
@@ -75,7 +74,7 @@
         <hr>
         <h3>類型 Type</h3>
 
-        @using (Html.BeginForm("ProductPage", "Wine"))
+        @using (Html.BeginForm("ProductCategory", "Product"))
         {
             <div class="form-group form-check">
                 <input type="checkbox" name="Category" class="form-check-input" id="紅酒" value="紅酒">
@@ -102,7 +101,7 @@
 
         <hr>
         <h3>年份 Year</h3>
-        @using (Html.BeginForm("ProductPage", "Wine"))
+        @using (Html.BeginForm("SearchProductYear", "Product"))
         {
             <div class="row ml-1">
                 <input name="Year_s" type="text" style="width: 70px;height: 40px;" placeholder="年份(起)" onkeyup="value=value.replace(/[^\d]/g,'')">
@@ -114,7 +113,7 @@
 
         <hr>
         <h3>價格 Price</h3>
-        @using (Html.BeginForm("ProductPage", "Wine"))
+        @using (Html.BeginForm("SearchProductPrice", "Product"))
         {
             <div class="row ml-1">
                 <input name="Price_s" type="text" style="width: 70px;height: 40px;" placeholder="價格(起)" onkeyup="value=value.replace(/[^\d]/g,'')">

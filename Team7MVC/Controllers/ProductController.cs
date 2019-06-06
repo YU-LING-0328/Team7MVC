@@ -19,40 +19,43 @@ namespace Team7MVC.Controllers
         }
         // GET: Product
         [HttpGet]
-        public ActionResult Index(int? Id)
+        public ActionResult Index()
         {
             List<Products> products;
-            if (Id == 1)
-            {
-                products = _repo.Getproducts(Id);
-            }
-            else if (Id == 2)
-            {
-                products = _repo.Getproducts(Id);
-            }
-            else if (Id == 3)
-            {
-                products = _repo.Getproducts(Id);
-            }
-            else
-            {
-                products = _repo.GetProducts();
-            }
+
+            products = _repo.GetProducts();
 
             return View(products);
         }
 
+
+
+        #region 產品搜尋
+
         [HttpPost]
-        public ActionResult Index(string search, int? Year_s, int? Year_e, decimal? Price_s, decimal? Price_e, string[] Origin, string[] Category)
+        public ActionResult SearchProductName(string search)
         {
             List<Products> products;
 
             if (search != null)
             {
                 products = _repo.GetProducts(search);
-
             }
-            else if (Year_e == null && Year_s != null)
+            else
+            {
+                products = _repo.GetProducts();
+            }
+
+            ViewData.Model = products;
+            return View("Index");
+        }
+
+        [HttpPost]
+        public ActionResult SearchProductYear(int? Year_s, int? Year_e)
+        {
+            List<Products> products;
+
+            if (Year_e == null && Year_s != null)
             {
                 products = _repo.GetProducts(Year_s);
             }
@@ -60,7 +63,21 @@ namespace Team7MVC.Controllers
             {
                 products = _repo.GetProducts(Year_s, Year_e);
             }
-            else if (Price_e == null && Price_s != null)
+            else
+            {
+                products = _repo.GetProducts();
+            }
+
+            ViewData.Model = products;
+            return View("Index");
+        }
+
+        [HttpPost]
+        public ActionResult SearchProductPrice(decimal? Price_s, decimal? Price_e)
+        {
+            List<Products> products;
+
+            if (Price_e == null && Price_s != null)
             {
                 products = _repo.GetProducts(Price_s);
             }
@@ -68,11 +85,43 @@ namespace Team7MVC.Controllers
             {
                 products = _repo.GetProducts(Price_s, Price_e);
             }
-            else if (Origin != null)
+            else
+            {
+                products = _repo.GetProducts();
+            }
+
+            ViewData.Model = products;
+            return View("Index");
+        }
+
+        #endregion
+
+        #region 產品分類
+
+        [HttpPost]
+        public ActionResult ProductOrigin(string[] Origin)
+        {
+            List<Products> products;
+
+            if (Origin != null)
             {
                 products = _repo.GetProducts(Origin, 1);
             }
-            else if (Category != null)
+            else
+            {
+                products = _repo.GetProducts();
+            }
+
+            ViewData.Model = products;
+            return View("Index");
+        }
+
+        [HttpPost]
+        public ActionResult ProductCategory(string[] Category)
+        {
+            List<Products> products;
+
+            if (Category != null)
             {
                 products = _repo.GetProducts(Category, 2);
             }
@@ -81,9 +130,44 @@ namespace Team7MVC.Controllers
                 products = _repo.GetProducts();
             }
 
-
-            return View(products);
+            ViewData.Model = products;
+            return View("Index");
         }
+
+        public ActionResult NewProduct()
+        {
+            List<Products> products;
+
+
+            products = _repo.GetNewProducts();
+
+            ViewData.Model = products;
+            return View("Index");
+        }
+
+        public ActionResult HotProduct()
+        {
+            List<Products> products;
+
+
+            products = _repo.GetHotProducts();
+
+            ViewData.Model = products;
+            return View("Index");
+        }
+
+        public ActionResult ExpensiveProduct()
+        {
+            List<Products> products;
+
+
+            products = _repo.GetExpensiveProducts();
+
+            ViewData.Model = products;
+            return View("Index");
+        }
+
+        #endregion
 
         [HttpGet]
         public ActionResult ProductDetail(int Id)
